@@ -38,8 +38,8 @@ export async function PUT(request: Request, { params }: RouteContext) {
   }
 
   const hours = body.trained ? Number(body.hours) : null;
-  if (body.trained && (!Number.isFinite(hours) || hours === null || hours <= 0 || hours > 24)) {
-    return NextResponse.json({ error: "Hours must be between 0.01 and 24." }, { status: 400 });
+  if (body.trained && (!Number.isFinite(hours) || hours === null || hours < 0.25 || hours > 24)) {
+    return NextResponse.json({ error: "Hours must be between 0.25 and 24." }, { status: 400 });
   }
 
   try {

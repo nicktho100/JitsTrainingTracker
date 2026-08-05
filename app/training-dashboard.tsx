@@ -98,8 +98,8 @@ export function TrainingDashboard({ initialOverview, userName, signOutPath }: Pr
     setIsError(false);
     try {
       const numericHours = Number(hours);
-      if (trained && (!Number.isFinite(numericHours) || numericHours <= 0 || numericHours > 24)) {
-        throw new Error("Enter a training duration between 0.01 and 24 hours.");
+      if (trained && (!Number.isFinite(numericHours) || numericHours < 0.25 || numericHours > 24)) {
+        throw new Error("Enter a training duration between 0.25 and 24 hours.");
       }
       const response = await fetch(`/api/day/${selectedDate}`, {
         method: "PUT",
@@ -185,7 +185,7 @@ export function TrainingDashboard({ initialOverview, userName, signOutPath }: Pr
                 </div>
                 <div className="field">
                   <label htmlFor="training-hours">Hours trained</label>
-                  <input id="training-hours" type="number" min="0.01" max="24" step="0.25" inputMode="decimal" disabled={!trained || loadingDay} value={hours} onChange={(event) => setHours(event.target.value)} />
+                  <input id="training-hours" type="number" min="0.25" max="24" step="0.25" inputMode="decimal" disabled={!trained || loadingDay} value={hours} onChange={(event) => setHours(event.target.value)} />
                 </div>
               </div>
 
