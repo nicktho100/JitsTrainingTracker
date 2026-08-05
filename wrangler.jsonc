@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "mat-time",
+  "name": "mat-time-tracker",
   "main": "./worker/index.ts",
   "compatibility_date": "2026-08-05",
   "compatibility_flags": ["nodejs_compat"],

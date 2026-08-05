@@ -75,7 +75,7 @@ pnpm deploy
 Wrangler builds and deploys the application, then prints a production URL similar to:
 
 ```text
-https://mat-time.<your-cloudflare-subdomain>.workers.dev
+https://mat-time-tracker.<your-cloudflare-subdomain>.workers.dev
 ```
 
 Before Cloudflare Access is configured, opening the URL only shows the locked setup page. The application API rejects unauthenticated requests and does not expose training data.
@@ -83,7 +83,7 @@ Before Cloudflare Access is configured, opening the URL only shows the locked se
 ## 4. Enable Cloudflare Access
 
 1. Open the Cloudflare dashboard.
-2. Go to **Workers & Pages** and select **mat-time**.
+2. Go to **Workers & Pages** and select **mat-time-tracker**.
 3. Open **Domains** or **Settings > Domains & Routes**, depending on the dashboard layout.
 4. Find the production `workers.dev` URL and select **Enable Cloudflare Access**.
 5. Create or select an Access policy that allows only your email address.
