@@ -1,0 +1,143 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "6a8a992a-7fd1-4cc8-836a-b5542f7f7985",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "training_sessions": {
+      "name": "training_sessions",
+      "columns": {
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "training_date": {
+          "name": "training_date",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hours": {
+          "name": "hours",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
+        }
+      },
+      "indexes": {
+        "training_sessions_owner_date_idx": {
+          "name": "training_sessions_owner_date_idx",
+          "columns": [
+            "owner_id",
+            "training_date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "training_sessions_owner_id_training_date_pk": {
+          "columns": [
+            "owner_id",
+            "training_date"
+          ],
+          "name": "training_sessions_owner_id_training_date_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "training_sessions_hours_check": {
+          "name": "training_sessions_hours_check",
+          "value": "\"training_sessions\".\"hours\" > 0 AND \"training_sessions\".\"hours\" <= 24"
+        }
+      }
+    },
+    "yearly_totals": {
+      "name": "yearly_totals",
+      "columns": {
+        "owner_id": {
+          "name": "owner_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "year": {
+          "name": "year",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hours": {
+          "name": "hours",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "yearly_totals_owner_id_year_pk": {
+          "columns": [
+            "owner_id",
+            "year"
+          ],
+          "name": "yearly_totals_owner_id_year_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "yearly_totals_year_check": {
+          "name": "yearly_totals_year_check",
+          "value": "\"yearly_totals\".\"year\" IN (2024, 2025)"
+        },
+        "yearly_totals_hours_check": {
+          "name": "yearly_totals_hours_check",
+          "value": "\"yearly_totals\".\"hours\" >= 0 AND \"yearly_totals\".\"hours\" <= 5000"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
